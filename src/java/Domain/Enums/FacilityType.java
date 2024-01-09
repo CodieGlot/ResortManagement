@@ -1,9 +1,10 @@
 package Domain.Enums;
 
 public enum FacilityType {
-    Villa(0),
-    House(1),
-    Room(2);
+    None(0),
+    Villa(1),
+    House(2),
+    Room(3);
 
     private final int index;
 

@@ -1,10 +1,11 @@
 package Domain.Enums;
 
 public enum QualificationType {
-    Intermediate(0),
-    College(1),
-    University(2),
-    PostGraduate(3);
+    None(0),
+    Intermediate(1),
+    College(2),
+    University(3),
+    PostGraduate(4);
 
     private final int index;
 

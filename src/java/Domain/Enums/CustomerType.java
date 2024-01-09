@@ -1,11 +1,12 @@
 package Domain.Enums;
 
 public enum CustomerType {
-    Diamond(0),
-    Platinum(1),
-    Gold(2),
-    Silver(3),
-    Member(4);
+    None(0),
+    Diamond(1),
+    Platinum(2),
+    Gold(3),
+    Silver(4),
+    Member(5);
 
     private final int index;
 

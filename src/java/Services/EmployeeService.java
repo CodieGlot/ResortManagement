@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Domain.DTOs.EmployeeDto.CreateEmployeeDto;
+import Domain.DTOs.EmployeeDto.UpdateEmployeeDto;
 import Domain.Enums.PositionType;
 import Domain.Enums.QualificationType;
 import Domain.Exceptions.ConflictException;
+import Domain.Exceptions.NotFoundException;
 import Domain.Models.Employee;
 import Repositories.Common.RepositoryBase;
 import Repositories.Entities.EmployeeEntity;
@@ -54,6 +56,50 @@ public class EmployeeService extends RepositoryBase<EmployeeEntity> {
 
         List<Object> params = new ArrayList<>();
         params.add(dto.getId());
+        params.add(dto.getFullName());
+        params.add(dto.getBirthDate());
+        params.add(dto.getGender());
+        params.add(dto.getIdNumber());
+        params.add(dto.getPhoneNumber());
+        params.add(dto.getEmail());
+        params.add(dto.getQualification().getIndex());
+        params.add(dto.getPosition().getIndex());
+        params.add(dto.getSalary());
+
+        super.executeNonQuery(query, params);
+    }
+
+    public void updateEmployee(String id, UpdateEmployeeDto dto) {
+        EmployeeEntity entity = super.getById(id);
+
+        if (entity == null) {
+            throw new NotFoundException("User ID not found.");
+        }
+
+        if (dto.getFullName() == null)
+            dto.setFullName(entity.getFullName());
+        if (dto.getBirthDate() == null)
+            dto.setBirthDate(entity.getBirthDate());
+        if (dto.getGender() == null)
+            dto.setGender(entity.getGender());
+        if (dto.getIdNumber() == null)
+            dto.setIdNumber(entity.getIdNumber());
+        if (dto.getPhoneNumber() == null)
+            dto.setPhoneNumber(entity.getPhoneNumber());
+        if (dto.getEmail() == null)
+            dto.setEmail(entity.getEmail());
+        if (dto.getQualification() == QualificationType.None)
+            dto.setQualification(QualificationType.fromIndex(entity.getQualification()));
+        if (dto.getPosition() == PositionType.None)
+            dto.setPosition(PositionType.fromIndex(entity.getPosition()));
+        if (dto.getSalary() == null)
+            dto.setSalary(entity.getSalary());
+
+        String query = String.format(
+                "UPDATE %s SET FullName=?,BirthDate=?,Gender=?,IdNumber=?,PhoneNumber=?,Email=?,Qualification=?,Position=?,Salary=? WHERE Id = %s;",
+                getTableName(), id);
+
+        List<Object> params = new ArrayList<>();
         params.add(dto.getFullName());
         params.add(dto.getBirthDate());
         params.add(dto.getGender());

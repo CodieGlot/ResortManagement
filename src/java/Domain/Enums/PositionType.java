@@ -1,12 +1,13 @@
 package Domain.Enums;
 
 public enum PositionType {
-    Receptionist(0),
-    Server(1),
-    Specialist(2),
-    Supervisor(3),
-    Manager(4),
-    Director(5);
+    None(0),
+    Receptionist(1),
+    Server(2),
+    Specialist(3),
+    Supervisor(4),
+    Manager(5),
+    Director(6);
 
     private final int index;
 

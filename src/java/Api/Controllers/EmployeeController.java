@@ -68,10 +68,12 @@ public class EmployeeController extends HttpServlet {
         EmployeeService employeeService = new EmployeeService();
         EmployeeValidator employeeValidator = new EmployeeValidator();
 
+        List<String> validationErrors;
+
         switch (action) {
             case "create":
                 CreateEmployeeDto createEmployeeDto = new CreateEmployeeDto(request);
-                List<String> validationErrors = employeeValidator.validateCreateEmployeeDto(createEmployeeDto);
+                validationErrors = employeeValidator.validateCreateEmployeeDto(createEmployeeDto);
                 if (validationErrors.size() == 0) {
                     try {
                         employeeService.createEmployee(createEmployeeDto);
@@ -104,7 +106,38 @@ public class EmployeeController extends HttpServlet {
                 break;
             case "update":
                 String id = request.getParameter("id");
-                Employee employee = employeeService.getEmployeeById(id);
+                UpdateEmployeeDto updateEmployeeDto = new UpdateEmployeeDto(request);
+                validationErrors = employeeValidator.validateUpdateEmployeeDto(updateEmployeeDto);
+
+                if (validationErrors.size() == 0) {
+                    try {
+                        employeeService.updateEmployee(id, updateEmployeeDto);
+                    } catch (ConflictException ex) {
+                        try (PrintWriter out = response.getWriter()) {
+                            out.println("<!DOCTYPE html>");
+                            out.println("<html>");
+                            out.println("<head>");
+                            out.println("<title>Servlet EmployeeController</title>");
+                            out.println("</head>");
+                            out.println("<body>");
+                            out.println(ex.getMessage());
+                            out.println("</body>");
+                            out.println("</html>");
+                        }
+                    }
+                } else {
+                    try (PrintWriter out = response.getWriter()) {
+                        out.println("<!DOCTYPE html>");
+                        out.println("<html>");
+                        out.println("<head>");
+                        out.println("<title>Servlet EmployeeController</title>");
+                        out.println("</head>");
+                        out.println("<body>");
+                        out.println("<h1>Validation failed: " + String.join(", ", validationErrors) + "</h1>");
+                        out.println("</body>");
+                        out.println("</html>");
+                    }
+                }
                 break;
             default:
                 try (PrintWriter out = response.getWriter()) {

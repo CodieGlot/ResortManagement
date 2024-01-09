@@ -4,9 +4,17 @@
         <servlet-name>EmployeeController</servlet-name>
         <servlet-class>Api.Controllers.EmployeeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CustomerController</servlet-name>
+        <servlet-class>Api.Controllers.CustomerController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>EmployeeController</servlet-name>
         <url-pattern>/EmployeeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerController</servlet-name>
+        <url-pattern>/CustomerController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

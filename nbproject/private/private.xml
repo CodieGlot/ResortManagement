@@ -5,9 +5,12 @@
         <group>
             <file>file:/C:/My_Folder/Coding%20Space/ResortManagement/src/java/Domain/DTOs/EmployeeDto/CreateEmployeeDto.java</file>
             <file>file:/C:/My_Folder/Coding%20Space/ResortManagement/src/java/Api/Controllers/EmployeeController.java</file>
+            <file>file:/C:/My_Folder/Coding%20Space/ResortManagement/src/java/Domain/DTOs/CustomerDto/CreateCustomerDto.java</file>
             <file>file:/C:/My_Folder/Coding%20Space/ResortManagement/src/java/Api/Validators/EmployeeValidator.java</file>
             <file>file:/C:/My_Folder/Coding%20Space/ResortManagement/src/java/Domain/DTOs/EmployeeDto/UpdateEmployeeDto.java</file>
+            <file>file:/C:/My_Folder/Coding%20Space/ResortManagement/src/java/Api/Controllers/CustomerController.java</file>
             <file>file:/C:/My_Folder/Coding%20Space/ResortManagement/src/java/Utils/ConvertUtils.java</file>
+            <file>file:/C:/My_Folder/Coding%20Space/ResortManagement/src/java/Domain/DTOs/CustomerDto/UpdateCustomerDto.java</file>
         </group>
     </open-files>
 </project-private>

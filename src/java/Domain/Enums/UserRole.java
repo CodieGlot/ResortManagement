@@ -1,8 +1,9 @@
 package Domain.Enums;
 
 public enum UserRole {
-    Admin(0),
-    User(1);
+    None(0),
+    Admin(1),
+    User(2);
 
     private final int index;
 
