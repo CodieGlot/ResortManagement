@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://cdn.tailwindcss.com"></script>
-        <title>Home</title>
+        <title>Resort Hub | The world is in your hand</title>
     </head>
     <body>
         <jsp:include page="../layout/header.jsp"/>       

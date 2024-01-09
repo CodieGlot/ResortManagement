@@ -18,16 +18,6 @@ import Services.EmployeeService;
 
 public class EmployeeController extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
-    // + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -51,14 +41,6 @@ public class EmployeeController extends HttpServlet {
         }
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -77,6 +59,8 @@ public class EmployeeController extends HttpServlet {
                 if (validationErrors.size() == 0) {
                     try {
                         employeeService.createEmployee(createEmployeeDto);
+                        response.sendRedirect("Admin/Dashboard/CreateSuccess.jsp");
+                        return;
                     } catch (ConflictException ex) {
                         try (PrintWriter out = response.getWriter()) {
                             out.println("<!DOCTYPE html>");
@@ -141,25 +125,20 @@ public class EmployeeController extends HttpServlet {
                 break;
             default:
                 try (PrintWriter out = response.getWriter()) {
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>Servlet EmployeeController</title>");
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>Invalid action: " + action + "</h1>");
-                    out.println("</body>");
-                    out.println("</html>");
-                }
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet EmployeeController</title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>Invalid action: " + action + "</h1>");
+                out.println("</body>");
+                out.println("</html>");
+            }
 
         }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
