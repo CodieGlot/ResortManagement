@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import Config.DbConnection;
+import Utils.ConvertUtils;
 
 public abstract class RepositoryBase<TEntity> {
 
@@ -22,7 +23,7 @@ public abstract class RepositoryBase<TEntity> {
         return executeQuery(query, new ArrayList<>());
     }
 
-    protected TEntity getById(String id) {
+    protected TEntity getById(Object id) {
         String query = String.format("SELECT TOP 1 * FROM %s WHERE Id = ?;", getTableName());
         List<Object> params = new ArrayList<>();
         params.add(id);

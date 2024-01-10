@@ -1,28 +1,25 @@
-package Domain.Models;
+package Domain.DTOs.BookingDto;
 
 import java.math.BigDecimal;
 
-public class RentalContract {
-    private int id;
+import javax.servlet.http.HttpServletRequest;
+
+import Utils.ConvertUtils;
+
+public class CreateRentalContractDto {
     private int bookingId;
-    private Booking booking;
     private BigDecimal deposit;
     private BigDecimal totalAmount;
 
-    public RentalContract() {
+    public CreateRentalContractDto(HttpServletRequest request) {
+        bookingId = ConvertUtils.convertStringToInt(request.getParameter("BookingId"));
+        deposit = ConvertUtils.convertStringToBigDecimal(request.getParameter("Deposit"));
+        totalAmount = ConvertUtils.convertStringToBigDecimal(request.getParameter("TotalAmount"));
     }
 
     // Getters
-    public int getId() {
-        return id;
-    }
-
     public int getBookingId() {
         return bookingId;
-    }
-
-    public Booking getBooking() {
-        return booking;
     }
 
     public BigDecimal getDeposit() {
@@ -34,16 +31,8 @@ public class RentalContract {
     }
 
     // Setters
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setBookingId(int bookingId) {
         this.bookingId = bookingId;
-    }
-
-    public void setBooking(Booking booking) {
-        this.booking = booking;
     }
 
     public void setDeposit(BigDecimal deposit) {

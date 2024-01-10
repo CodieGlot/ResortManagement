@@ -43,7 +43,7 @@ public class FacilityService extends RepositoryBase<FacilityEntity> {
         return facilities;
     }
 
-    public Facility getFacilityById(String id, FacilityType facilityType) {
+    public Facility getFacilityById(String id) {
         FacilityEntity entity = super.getById(id);
         Facility facility = mapEntityToFacility(entity);
 

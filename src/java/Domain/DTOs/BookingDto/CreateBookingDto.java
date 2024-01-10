@@ -1,25 +1,29 @@
-package Domain.Models;
+package Domain.DTOs.BookingDto;
 
 import java.util.Date;
 
-public class Booking {
-    private int id;
+import Domain.Models.Customer;
+import Domain.Models.Facility;
+import Utils.ConvertUtils;
+
+import javax.servlet.http.HttpServletRequest;
+
+public class CreateBookingDto {
     private Date bookingDate;
     private Date startDate;
     private Date endDate;
     private String customerId;
     private String facilityId;
-    private Customer customer;
-    private Facility facility;
 
-    public Booking() {
+    public CreateBookingDto(HttpServletRequest request) {
+        bookingDate = ConvertUtils.convertStringToDate(request.getParameter("BookingDate"));
+        startDate = ConvertUtils.convertStringToDate(request.getParameter("StartDate"));
+        endDate = ConvertUtils.convertStringToDate(request.getParameter("EndDate"));
+        customerId = request.getParameter("CustomerId");
+        facilityId = request.getParameter("FacilityId");
     }
 
     // Getters
-    public int getId() {
-        return id;
-    }
-
     public Date getBookingDate() {
         return bookingDate;
     }
@@ -40,19 +44,7 @@ public class Booking {
         return facilityId;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public Facility getFacility() {
-        return facility;
-    }
-
     // Setters
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setBookingDate(Date bookingDate) {
         this.bookingDate = bookingDate;
     }
@@ -71,13 +63,5 @@ public class Booking {
 
     public void setFacilityId(String facilityId) {
         this.facilityId = facilityId;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public void setFacility(Facility facility) {
-        this.facility = facility;
     }
 }
