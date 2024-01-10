@@ -1,9 +1,3 @@
-<%-- 
-    Document   : CreateEmployee
-    Created on : Jan 9, 2024, 9:49:14 PM
-    Author     : jpesewang
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,31 +7,15 @@
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body>
-<!--        <form
-            name="CreateEmployee"
-            method="POST"
-            action="/EmployeeController?action=create"
-            >
-            Id: <input type="text" name="Id" /> <br />
-            FullName: <input type="text" name="FullName" /> <br />
-            Gender: <input type="text" name="Gender" /> <br />
-            BirthDate: <input type="date" name="BirthDate" /> <br />
-            IdNumber: <input type="text" name="IdNumber" /> <br />
-            PhoneNumber: <input type="text" name="PhoneNumber" /> <br />
-            Email: <input type="text" name="Email" /> <br />
-            Qualification: <input type="text" name="Qualification" /> <br />
-            Position: <input type="text" name="Position" /> <br />
-            Salary: <input type="text" name="Salary" /> <br />
-            <input type="submit" value="Submit" />
-        </form>-->
 
-
-
+        <%@ include file="../AdminNav.jsp" %>
         <div class="space-y-10 divide-y divide-gray-900/10 mx-6 mt-12">
             <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
                 <div class="px-4 sm:px-0">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Create new Employee</h2>
                     <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
+                    <% String error = (String) request.getAttribute("error");%>
+                    <span class="text-red-400 font-medium text-lg"><%= error != null ? error : ""%></span>
                 </div>
 
                 <form class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2"
@@ -111,7 +89,6 @@
                                 <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Qualification</label>
                                 <div class="mt-2">           
                                     <select id="country" name="Qualification" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                        <option value="0">None</option>
                                         <option value=1>Intermediate</option>  
                                         <option value="2">College</option> 
                                         <option value="3">University</option> 
@@ -123,7 +100,6 @@
                                 <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Position</label>
                                 <div class="mt-2">
                                     <select id="country" name="Position" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                        <option value="0">None</option>
                                         <option value="1">Receptionist</option>  
                                         <option value="2">Server</option> 
                                         <option value="3">Specialist</option> 

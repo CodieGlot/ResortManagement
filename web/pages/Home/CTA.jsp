@@ -1,6 +1,6 @@
 <%-- 
-    Document   : CreateEmployeeSuccess
-    Created on : Jan 9, 2024, 11:09:38 PM
+    Document   : CTA
+    Created on : Jan 10, 2024, 1:07:08 PM
     Author     : jpesewang
 --%>
 
@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://cdn.tailwindcss.com"></script>
         <title>JSP Page</title>
     </head>
     <body>

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import Api.Validators.EmployeeValidator;
 import Domain.DTOs.EmployeeDto.CreateEmployeeDto;
 import Domain.DTOs.EmployeeDto.UpdateEmployeeDto;
@@ -24,21 +25,11 @@ public class EmployeeController extends HttpServlet {
         EmployeeService employeeService = new EmployeeService();
 
         List<Employee> employees = employeeService.getAllEmployees();
+      
+        request.setAttribute("employees", employees);
+        request.getRequestDispatcher("Admin/Dashboard/ListEmployee.jsp").forward(request, response);
+        
 
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EmployeeController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EmployeeController at " + request.getContextPath() + "</h1>");
-            out.println("Employees: " + employees.get(2).getQualification());
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
 
     @Override
@@ -75,17 +66,9 @@ public class EmployeeController extends HttpServlet {
                         }
                     }
                 } else {
-                    try (PrintWriter out = response.getWriter()) {
-                        out.println("<!DOCTYPE html>");
-                        out.println("<html>");
-                        out.println("<head>");
-                        out.println("<title>Servlet EmployeeController</title>");
-                        out.println("</head>");
-                        out.println("<body>");
-                        out.println("<h1>Validation failed: " + String.join(", ", validationErrors) + "</h1>");
-                        out.println("</body>");
-                        out.println("</html>");
-                    }
+                    request.setAttribute("error", String.join(", ", validationErrors));
+                    request.getRequestDispatcher("Admin/Dashboard/CreateEmployee.jsp").forward(request, response);
+//                  
                 }
                 break;
             case "update":
@@ -110,17 +93,8 @@ public class EmployeeController extends HttpServlet {
                         }
                     }
                 } else {
-                    try (PrintWriter out = response.getWriter()) {
-                        out.println("<!DOCTYPE html>");
-                        out.println("<html>");
-                        out.println("<head>");
-                        out.println("<title>Servlet EmployeeController</title>");
-                        out.println("</head>");
-                        out.println("<body>");
-                        out.println("<h1>Validation failed: " + String.join(", ", validationErrors) + "</h1>");
-                        out.println("</body>");
-                        out.println("</html>");
-                    }
+                    request.setAttribute("error", String.join(", ", validationErrors));
+                    request.getRequestDispatcher("Admin/Dashboard/CreateEmployee.jsp").forward(request, response);
                 }
                 break;
             default:

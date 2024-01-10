@@ -1,8 +1,4 @@
-<%-- 
-    Document   : signup
-    Created on : Jan 5, 2024, 11:30:16 PM
-    Author     : jpesewang
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,10 +9,10 @@
         <title>Sign Page</title>
     </head>
     <body>
-        <jsp:include page="../layout/header.jsp"/>  
+        <jsp:include page="../../layout/header.jsp"/>  
         <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-                <img class="mx-auto h-12 w-auto" src="../assets/images/logo.png" alt="ResortHub Logo" />
+                <img class="mx-auto h-12 w-auto" src="../../assets/images/logo.png" alt="ResortHub Logo" />
                 <h2 class="mt-10 text-center text-2xl font-extrabold leading-9 tracking-tight text-gray-900 font-gothic">
                     BECOME A RESORTHUB MEMBER
                 </h2>
@@ -26,6 +22,27 @@
                 </p>
                 <form class="space-y-4 items-center" >
                     <div class="my-2 w-9/12 mx-auto">
+                         <input
+                            type="text"
+                            autoComplete="current-password"
+                            placeholder="Customer ID"
+                            required
+                            class="block w-full rounded border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 my-4"
+                            />
+                          <input
+                            type="text"
+                            autoComplete="current-password"
+                            placeholder="Full Name"
+                            required
+                            class="block w-full rounded border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 my-4"
+                            />
+                           <input
+                            type="date"
+                            autoComplete="current-password"
+                            placeholder="Birthday"
+                            required
+                            class="block w-full rounded border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 my-4"
+                            />
                         <input
                             id="email"
                             name="email"
@@ -44,20 +61,8 @@
                             required
                             class="block w-full rounded border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 my-4"
                             />
-                        <input
-                            type="text"
-                            autoComplete="current-password"
-                            placeholder="First Name"
-                            required
-                            class="block w-full rounded border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 my-4"
-                            />
-                        <input
-                            type="text"
-                            autoComplete="current-password"
-                            placeholder="Last Name"
-                            required
-                            class="block w-full rounded border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 my-4"
-                            />
+                       
+                       
                     
 
                         <div class="flex items-center">
@@ -78,7 +83,7 @@
                     <div>
                         <div class="">
                             <p class="text-center font-light text-sm text-gray-500 py-3 px-4">
-                                By creating an account, you agree to Nike&apos;s 
+                                By creating an account, you agree to Resort Hub&apos;s 
                                 <span class="underline">Privacy Policy</span> and
                                 <span class="underline"> Terms of Use</span>.
                             </p>
@@ -98,13 +103,13 @@
 
                 <p class="mt-10 text-center text-sm text-gray-500">
                     Already a member?
-                    <a href="/auth/login" class=" leading-6 text-black underline">
+                    <a href="/ResortManagement/pages/Auth/login.jsp" class=" leading-6 text-black underline">
                         Sign in.
                     </a>
                 </p>
             </div>
         </div>
 
-        <jsp:include page="../layout/footer.jsp"/>  
+        <jsp:include page="../../layout/footer.jsp"/>  
     </body>
 </html>

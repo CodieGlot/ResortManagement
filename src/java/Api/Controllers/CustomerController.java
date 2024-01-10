@@ -62,9 +62,10 @@ public class CustomerController extends HttpServlet {
                         handleConflictException(response, ex.getMessage());
                     }
                 } else {
-                    handleValidationErrors(response, validationErrors);
+                    handleValidationErrors(request, response, validationErrors);
                 }
                 break;
+                
             case "update":
                 String customerId = request.getParameter("id");
                 UpdateCustomerDto updateCustomerDto = new UpdateCustomerDto(request);
@@ -77,7 +78,7 @@ public class CustomerController extends HttpServlet {
                         handleConflictException(response, ex.getMessage());
                     }
                 } else {
-                    handleValidationErrors(response, validationErrors);
+                    handleValidationErrors(request, response, validationErrors);
                 }
                 break;
             default:
@@ -99,19 +100,24 @@ public class CustomerController extends HttpServlet {
         }
     }
 
-    private void handleValidationErrors(HttpServletResponse response, List<String> validationErrors)
-            throws IOException {
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CustomerController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Validation failed: " + String.join(", ", validationErrors) + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+    private void handleValidationErrors(HttpServletRequest request, HttpServletResponse response, List<String> validationErrors)
+            throws IOException, ServletException {
+//        Hanle error log
+        request.setAttribute("error", String.join(", ", validationErrors));
+        request.getRequestDispatcher("/ResortManagement/Admin/Dashboard/CreateEmployee.jsp").forward(request, response);
+        
+        
+//        try (PrintWriter out = response.getWriter()) {
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet CustomerController</title>");
+//            out.println("</head>");
+//            out.println("<body>");
+//            out.println("<h1>Validation failed: " + String.join(", ", validationErrors) + "</h1>");
+//            out.println("</body>");
+//            out.println("</html>");
+//        }
     }
 
     private void handleInvalidAction(HttpServletResponse response, String action) throws IOException {
