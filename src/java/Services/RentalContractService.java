@@ -11,6 +11,7 @@ import Repositories.Common.RepositoryBase;
 import Repositories.Entities.RentalContractEntity;
 
 public class RentalContractService extends RepositoryBase<RentalContractEntity> {
+    private BookingService bookingService;
 
     @Override
     protected String getTableName() {
@@ -20,6 +21,10 @@ public class RentalContractService extends RepositoryBase<RentalContractEntity> 
     @Override
     protected RentalContractEntity createEntityFromResultSet(ResultSet rs) throws SQLException {
         return new RentalContractEntity(rs);
+    }
+
+    public RentalContractService() {
+        bookingService = new BookingService();
     }
 
     public List<RentalContract> getAllRentalContracts() {
@@ -34,8 +39,11 @@ public class RentalContractService extends RepositoryBase<RentalContractEntity> 
 
     public RentalContract getRentalContractById(int id) {
         RentalContractEntity entity = super.getById(id);
+        RentalContract rentalContract = mapEntityToRentalContract(entity);
 
-        return mapEntityToRentalContract(entity);
+        rentalContract.setBooking(bookingService.getBookingById(id));
+
+        return rentalContract;
     }
 
     public void createRentalContract(CreateRentalContractDto dto) {
