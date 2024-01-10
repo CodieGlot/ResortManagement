@@ -3,7 +3,6 @@ package Domain.Models;
 public class Room {
     private String freeService;
 
-    // Constructor to convert from RoomEntity
     public Room() {
     }
 

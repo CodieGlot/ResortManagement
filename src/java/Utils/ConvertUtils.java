@@ -31,4 +31,13 @@ public class ConvertUtils {
             return -1; // Default value in case of conversion failure
         }
     }
+
+    public static float convertStringToFloat(String floatStr) {
+        try {
+            return Float.parseFloat(floatStr);
+        } catch (NumberFormatException e) {
+            return -1.0f; // Default value in case of conversion failure
+        }
+    }
+
 }

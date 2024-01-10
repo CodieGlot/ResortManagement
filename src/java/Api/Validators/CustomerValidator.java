@@ -27,9 +27,29 @@ public class CustomerValidator {
         // Add more validations as needed
         return errMsg;
     }
-    
+
     public List<String> validateUpdateCustomerDto(UpdateCustomerDto updateCustomerDto) {
-        return new ArrayList<String>();
+        List<String> errMsg = new ArrayList<>();
+
+        if (updateCustomerDto.getFullName() != null) {
+            validateName(updateCustomerDto.getFullName(), errMsg);
+        }
+
+        if (updateCustomerDto.getBirthDate() != null) {
+            validateAge(updateCustomerDto.getBirthDate(), errMsg);
+        }
+
+        if (updateCustomerDto.getIdNumber() != null) {
+            validateIdNumber(updateCustomerDto.getIdNumber(), errMsg);
+        }
+
+        if (updateCustomerDto.getPhoneNumber() != null) {
+            validatePhoneNumber(updateCustomerDto.getPhoneNumber(), errMsg);
+        }
+
+        // Add more validations as needed
+
+        return errMsg;
     }
 
     private void validateCustomerId(String customerId, List<String> errMsg) {

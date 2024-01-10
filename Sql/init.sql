@@ -45,6 +45,12 @@ CREATE TABLE "Facilities"(
 );
 ALTER TABLE
     "Facilities" ADD CONSTRAINT "facilities_id_primary" PRIMARY KEY("Id");
+-- Foreign key constraints with ON DELETE CASCADE
+
+ALTER TABLE "Facilities" ADD CONSTRAINT "facilities_villa_foreign" FOREIGN KEY ("Id") REFERENCES "Villas" ("Id") ON DELETE CASCADE;
+ALTER TABLE "Facilities" ADD CONSTRAINT "facilities_house_foreign" FOREIGN KEY ("Id") REFERENCES "Houses" ("Id") ON DELETE CASCADE;
+ALTER TABLE "Facilities" ADD CONSTRAINT "facilities_room_foreign" FOREIGN KEY ("Id") REFERENCES "Rooms" ("Id") ON DELETE CASCADE;
+
 CREATE TABLE "Employees"(
     "Id" NVARCHAR(7) NOT NULL,
     "FullName" NVARCHAR(255) NOT NULL,
