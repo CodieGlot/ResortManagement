@@ -8,6 +8,11 @@
         <servlet-name>CustomerController</servlet-name>
         <servlet-class>Api.Controllers.CustomerController</servlet-class>
     </servlet>
+     <servlet>
+        <servlet-name>EmployeeManager</servlet-name>
+        <servlet-class>Api.Controllers.EmployeeManager</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>EmployeeController</servlet-name>
         <url-pattern>/EmployeeController</url-pattern>
@@ -15,6 +20,10 @@
     <servlet-mapping>
         <servlet-name>CustomerController</servlet-name>
         <url-pattern>/CustomerController</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>EmployeeManager</servlet-name>
+        <url-pattern>/EmployeeManager</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -27,7 +36,6 @@
             <taglib-location>/WEB-INF/lib/c.tld</taglib-location>
         </taglib>
     </jsp-config>
-
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
